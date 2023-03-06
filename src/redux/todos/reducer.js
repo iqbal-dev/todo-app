@@ -9,8 +9,8 @@ import {
 import initialState from "./initialStat";
 
 const nextId = (todos) => {
-  let id = todos.reduce((acc, curr) => Math.max(curr.id, acc.id), -1);
-  return id++;
+  let id = todos.reduce((acc, curr) => Math.max(curr.id, acc), -1);
+  return id + 1;
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {

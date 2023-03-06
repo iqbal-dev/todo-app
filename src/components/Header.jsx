@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import doubleTick from "../assets/images/double-tick.png";
 import notes from "../assets/images/notes.png";
+import { todoAdded } from "../redux/todos/actions";
 export default function Header() {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(todoAdded(input));
+    setInput("");
+  };
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
   return (
     <div>
-      <form className="flex items-center bg-gray-100 px-4 py-4 rounded-md">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center bg-gray-100 px-4 py-4 rounded-md"
+      >
         <img src={notes} className="w-6 h-6" alt="Add todo" />
         <input
           type="text"
           placeholder="Type your todo"
           className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
+          value={input}
+          onChange={handleChange}
         />
         <button
           type="submit"
