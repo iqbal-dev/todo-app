@@ -2,7 +2,7 @@ const initialState = [
   {
     id: 1,
     text: "React redux",
-    completed: true,
+    completed: false,
   },
   {
     id: 2,
