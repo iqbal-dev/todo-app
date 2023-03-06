@@ -5,7 +5,7 @@ const initialState = [
     completed: true,
   },
   {
-    id: 1,
+    id: 2,
     text: "React redux",
     completed: true,
     color: "red",
