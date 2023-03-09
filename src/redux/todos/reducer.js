@@ -6,7 +6,7 @@ import {
   DELETED,
   TOGGLED,
 } from "./actionTypes";
-import initialState from "./initialStat";
+import initialState from "./initialState";
 
 const nextId = (todos) => {
   let id = todos.reduce((acc, curr) => Math.max(curr.id, acc), -1);
