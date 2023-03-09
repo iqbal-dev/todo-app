@@ -25,12 +25,14 @@ export default function TodoList() {
   };
   return (
     <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
-      {todos
-        .filter(filterBYStatus)
-        .filter(filterByColors)
-        .map((todo) => (
-          <Todo todo={todo} key={todo.id} />
-        ))}
+      {todos.length ? (
+        todos
+          .filter(filterBYStatus)
+          .filter(filterByColors)
+          .map((todo) => <Todo todo={todo} key={todo.id} />)
+      ) : (
+        <h5 className="text-center">Please Add Todo</h5>
+      )}
     </div>
   );
 }

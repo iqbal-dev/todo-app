@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import doubleTick from "../assets/images/double-tick.png";
 import notes from "../assets/images/notes.png";
-import { todoAdded } from "../redux/todos/actions";
+import {
+  todoAdded,
+  todoAllCompleted,
+  todoClearCompleted,
+} from "../redux/todos/actions";
 export default function Header() {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -13,6 +17,12 @@ export default function Header() {
   };
   const handleChange = (e) => {
     setInput(e.target.value);
+  };
+  const handleComplete = () => {
+    dispatch(todoAllCompleted());
+  };
+  const handleClear = () => {
+    dispatch(todoClearCompleted());
   };
   return (
     <div>
@@ -35,11 +45,13 @@ export default function Header() {
       </form>
 
       <ul className="flex justify-between my-4 text-xs text-gray-500">
-        <li className="flex space-x-1 cursor-pointer">
+        <li className="flex space-x-1 cursor-pointer" onClick={handleComplete}>
           <img className="w-4 h-4" src={doubleTick} alt="Complete" />
           <span>Complete All Tasks</span>
         </li>
-        <li className="cursor-pointer">Clear completed</li>
+        <li className="cursor-pointer" onClick={handleClear}>
+          Clear completed
+        </li>
       </ul>
     </div>
   );
